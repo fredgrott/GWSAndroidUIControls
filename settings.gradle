@@ -1,1 +1,1 @@
-include ':app', ':gwsroundedimageview', ':gwsblurredview'
+include ':app', ':gwsroundedimageview', ':gwsblurredview', ':gwschips'
