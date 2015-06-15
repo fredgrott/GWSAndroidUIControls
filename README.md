@@ -1,28 +1,11 @@
 # GWSAndroidReadMeTemplate
-![ReadMe Template cartoon](/art/readmetemplatecartoon.png)
+![best phones](/art/readmeandroiduicontrols.png)
 
-**image here, project logo screen shot or gif**
-
-
-**talk in sound bites to both tech and non-tech audiences, STORY FIRST than allegories, sentence fragments preferred sentences only 12 words long**
-
-**description and purpose of project here**
-
-I was reading someone dissect ad-copy of the Apple iPhone...
-
-And it occurred to me that to reach the non-tech audiences I have to Converse Different..
-
-Want the power that comes with more people reading your readme?
-
-Fork, this repo and re-use my template..
-
-## Aims
-
-## Benefits
+To ensure a certain level of quality both in the UI across targeted API levels I am accumulating the
+UI controls that I author and other UI controls I use with my modifications.
 
 
-
-[GWSAndroidReadMeTemplate Repo](https://github.com/shareme/GWSAndroidReadMeTemplate)
+[GWSAndroidUIControls Repo](https://github.com/shareme/GWSAndroidUIControls)
 
 # Implementation
 
