@@ -1,1 +1,1 @@
-include ':app', ':gwsroundedimageview', ':gwsblurredview', ':gwschips', ':gwsspringindicator', ':gwsrippleview', ':gwspanningview', ':gwskenburnsview'
+include ':app', ':gwsroundedimageview', ':gwsblurredview', ':gwschips', ':gwsspringindicator', ':gwsrippleview', ':gwspanningview', ':gwskenburnsview', ':gwsfadingactionbar'
