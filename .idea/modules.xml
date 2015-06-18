@@ -17,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/gwsroundedimageview/gwsroundedimageview.iml" filepath="$PROJECT_DIR$/gwsroundedimageview/gwsroundedimageview.iml" />
       <module fileurl="file://$PROJECT_DIR$/gwsspringindicator/gwsspringindicator.iml" filepath="$PROJECT_DIR$/gwsspringindicator/gwsspringindicator.iml" />
       <module fileurl="file://$PROJECT_DIR$/gwstextdrawable/gwstextdrawable.iml" filepath="$PROJECT_DIR$/gwstextdrawable/gwstextdrawable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gwstextkern/gwstextkern.iml" filepath="$PROJECT_DIR$/gwstextkern/gwstextkern.iml" />
       <module fileurl="file://$PROJECT_DIR$/gwstickplusdrawable/gwstickplusdrawable.iml" filepath="$PROJECT_DIR$/gwstickplusdrawable/gwstickplusdrawable.iml" />
     </modules>
   </component>
