@@ -46,6 +46,17 @@ import com.grottworkshop.gwsblurredview.R;
  * <p/>
  * Use {@link #setBlurredView(android.view.View)} to set up the reference to the view to be blurred.
  * After that, call {@link #invalidate()} to trigger blurring whenever necessary.
+ * <code>
+ *
+ *     onCreate {
+ *
+ *
+ *     blurringView.setBlurredView(blurredView);
+ *
+ *     }
+ *
+ *     blurringView.invalidate();
+ * </code>
  * Created by fgrott on 6/15/2015.
  */
 public class BlurringView extends View {
