@@ -25,6 +25,7 @@
 
 package com.grottworkshop.gwsrippleview;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -34,6 +35,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -107,7 +109,7 @@ public class RippleView extends RelativeLayout
         if (isInEditMode())
             return;
 
-        final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RippleView);
+        @SuppressLint("Recycle") final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RippleView);
         rippleColor = typedArray.getColor(R.styleable.RippleView_rv_color, getResources().getColor(R.color.rippelColor));
         rippleType = typedArray.getInt(R.styleable.RippleView_rv_type, 0);
         hasToZoom = typedArray.getBoolean(R.styleable.RippleView_rv_zoom, false);
@@ -145,14 +147,14 @@ public class RippleView extends RelativeLayout
     }
 
     @Override
-    public void addView(View child, int index, ViewGroup.LayoutParams params)
+    public void addView(@NonNull View child, int index, ViewGroup.LayoutParams params)
     {
         childView = child;
         super.addView(child, index, params);
     }
 
     @Override
-    public void draw(Canvas canvas)
+    public void draw(@NonNull Canvas canvas)
     {
         super.draw(canvas);
         if (animationRunning)
@@ -219,7 +221,7 @@ public class RippleView extends RelativeLayout
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event)
+    public boolean onTouchEvent(@NonNull MotionEvent event)
     {
         if (gestureDetector.onTouchEvent(event) && !animationRunning)
         {

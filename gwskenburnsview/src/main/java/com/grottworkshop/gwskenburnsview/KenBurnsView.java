@@ -24,6 +24,7 @@ import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -31,6 +32,25 @@ import android.widget.ImageView;
 /**
  * {@link ImageView} extension that animates its image with the
  * <a href="http://en.wikipedia.org/wiki/Ken_Burns_effect">Ken Burns Effect</a>.
+ *
+ * usage:
+ * <code>
+ *     private KenBurnsView mImg;
+ * </code>
+ *
+ * than in the onCreate
+ * <code>
+ *     mImg = (KenBurnsView) findViewById(R.id.img);
+ * </code>
+ * than in the onPlayClick
+ * <code>
+ *     mImg.resume();
+ * </code>
+ * than in the onPauseClick
+ * <code>
+ *     mImg.pause();
+ * </code>
+ *
  * @author Flavio Faria
  * @see Transition
  * @see ITransitionGenerator
@@ -153,7 +173,7 @@ public class KenBurnsView extends ImageView {
 
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(@NonNull Canvas canvas) {
         Drawable d = getDrawable();
         if (!mPaused && d != null) {
             if (mDrawableRect.isEmpty()) {
@@ -241,7 +261,7 @@ public class KenBurnsView extends ImageView {
 
     /**
      * Checks whether this view has bounds.
-     * @return
+     * @return boolean false if empty
      */
     private boolean hasBounds() {
         return !mViewportRect.isEmpty();
@@ -355,12 +375,12 @@ public class KenBurnsView extends ImageView {
          * Notifies the start of a transition.
          * @param transition the transition that just started.
          */
-        public void onTransitionStart(Transition transition);
+        void onTransitionStart(Transition transition);
 
         /**
          * Notifies the end of a transition.
          * @param transition the transition that just ended.
          */
-        public void onTransitionEnd(Transition transition);
+        void onTransitionEnd(Transition transition);
     }
 }

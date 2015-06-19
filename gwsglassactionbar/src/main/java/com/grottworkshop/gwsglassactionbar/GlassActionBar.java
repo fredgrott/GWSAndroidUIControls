@@ -18,6 +18,7 @@
 package com.grottworkshop.gwsglassactionbar;
 
 /**
+ * GlassActionBar
  * Created by fgrott on 6/16/2015.
  */
 public class GlassActionBar {

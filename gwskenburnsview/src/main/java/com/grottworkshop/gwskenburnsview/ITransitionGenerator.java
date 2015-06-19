@@ -20,6 +20,7 @@ package com.grottworkshop.gwskenburnsview;
 import android.graphics.RectF;
 
 /**
+ * ITransitionGenerator interface.
  * Created by fgrott on 6/16/2015.
  */
 public interface ITransitionGenerator {

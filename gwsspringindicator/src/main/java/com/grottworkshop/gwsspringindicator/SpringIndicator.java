@@ -67,15 +67,28 @@ public class SpringIndicator extends FrameLayout {
     private ITabClickListener tabClickListener;
     private ObjectAnimator indicatorColorAnim;
 
+    /**
+     *
+     * @param context the context
+     */
     public SpringIndicator(Context context) {
         this(context, null);
     }
 
+    /**
+     *
+     * @param context the context
+     * @param attrs the attributeSet
+     */
     public SpringIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttrs(attrs);
     }
 
+    /**
+     *
+     * @param attrs the attributeSet
+     */
     private void initAttrs(AttributeSet attrs){
         textColorId = R.color.si_default_text_color;
         selectedTextColorId = R.color.si_default_text_color_selected;
@@ -102,6 +115,10 @@ public class SpringIndicator extends FrameLayout {
     }
 
 
+    /**
+     *
+     * @param viewPager the ViewPager
+     */
     public void setViewPager(final ViewPager viewPager) {
         this.viewPager = viewPager;
         initSpringView();
@@ -109,11 +126,13 @@ public class SpringIndicator extends FrameLayout {
     }
 
 
+
     private void initSpringView() {
         addPointView();
         addTabContainerView();
         addTabItems();
     }
+
 
     private void addPointView() {
         springView = new SpringView(getContext());
@@ -170,7 +189,14 @@ public class SpringIndicator extends FrameLayout {
         springView.animCreate();
     }
 
-
+    /**
+     *
+     * @param changed the changed boolean
+     * @param l the l int
+     * @param t the t int
+     * @param r the r int
+     * @param b the b int
+     */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
@@ -180,6 +206,7 @@ public class SpringIndicator extends FrameLayout {
 
 
     private void setUpListener(){
+        //TODO: ViewPager.setOnPageChangeListener is depreciated
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 
             @Override
@@ -259,16 +286,30 @@ public class SpringIndicator extends FrameLayout {
     }
 
 
+    /**
+     *
+     * @param position the position
+     * @return result of oriX=-tarX
+     */
     private float getPositionDistance(int position) {
         float tarX = tabs.get(position + 1).getX();
         float oriX = tabs.get(position).getX();
         return oriX - tarX;
     }
 
+    /**
+     *
+     * @param position the position
+     * @return the tabs x + tabs width/2 result
+     */
     private float getTabX(int position) {
         return tabs.get(position).getX() + tabs.get(position).getWidth() / 2;
     }
 
+    /**
+     *
+     * @param position the position
+     */
     private void setSelectedTextColor(int position){
         for (TextView tab : tabs) {
             tab.setTextColor(getResources().getColor(textColorId));
@@ -282,6 +323,10 @@ public class SpringIndicator extends FrameLayout {
         indicatorColorAnim.setDuration(INDICATOR_ANIM_DURATION);
     }
 
+    /**
+     *
+     * @param seekTime the seekTime
+     */
     private void seek(long seekTime) {
         if (indicatorColorAnim == null) {
             createIndicatorColorAnim();
@@ -289,14 +334,26 @@ public class SpringIndicator extends FrameLayout {
         indicatorColorAnim.setCurrentPlayTime(seekTime);
     }
 
+    /**
+     *
+     * @return tabs
+     */
     public List<TextView> getTabs(){
         return tabs;
     }
 
+    /**
+     *
+     * @param listener the listener
+     */
     public void setOnPageChangeListener(ViewPager.OnPageChangeListener listener){
         this.delegateListener = listener;
     }
 
+    /**
+     *
+     * @param listener the listener
+     */
     public void setOnTabClickListener(ITabClickListener listener){
         this.tabClickListener = listener;
     }

@@ -31,7 +31,7 @@ import com.squareup.picasso.Transformation;
  */
 public final class RoundedTransformationBuilder {
 
-    //private final Resources mResources;
+
     private final DisplayMetrics mDisplayMetrics;
 
     private float mCornerRadius = 0;
@@ -45,6 +45,11 @@ public final class RoundedTransformationBuilder {
         mDisplayMetrics = Resources.getSystem().getDisplayMetrics();
     }
 
+    /**
+     *
+     * @param scaleType the scaleType
+     * @return the RoundedTransformationBuilder class
+     */
     public RoundedTransformationBuilder scaleType(ImageView.ScaleType scaleType) {
         mScaleType = scaleType;
         return this;
@@ -91,16 +96,30 @@ public final class RoundedTransformationBuilder {
         return this;
     }
 
+    /**
+     *
+     * @param colors the colors
+     * @return the RoundedTransformationBuilder class
+     */
     public RoundedTransformationBuilder borderColor(ColorStateList colors) {
         mBorderColor = colors;
         return this;
     }
 
+    /**
+     *
+     * @param oval the oval boolean
+     * @return the RoundedTransformationBuilder class
+     */
     public RoundedTransformationBuilder oval(boolean oval) {
         mOval = oval;
         return this;
     }
 
+    /**
+     *
+     * @return a new Transformation
+     */
     public Transformation build() {
         return new Transformation() {
             @Override public Bitmap transform(Bitmap source) {

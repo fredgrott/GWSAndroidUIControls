@@ -1,7 +1,7 @@
 package com.grottworkshop.gwsglassactionbar;
 
 import android.content.Context;
-import android.os.Build;
+
 import android.util.AttributeSet;
 import android.widget.ScrollView;
 
@@ -11,9 +11,7 @@ import android.widget.ScrollView;
  * Created by fgrott on 6/16/2015.
  */
 public class NotifyingScrollView extends ScrollView {
-    // Edge-effects don't mix well with the translucent action bar in Android 2.X
-    //TODO: turn on edgeffects as we are not on android 2.x anymore
-    private boolean mDisableEdgeEffects = true;
+
 
     /**
      * @author Cyril Mottier
@@ -50,19 +48,13 @@ public class NotifyingScrollView extends ScrollView {
 
     @Override
     protected float getTopFadingEdgeStrength() {
-        // http://stackoverflow.com/a/6894270/244576
-        if (mDisableEdgeEffects && Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-            return 0.0f;
-        }
+
         return super.getTopFadingEdgeStrength();
     }
 
     @Override
     protected float getBottomFadingEdgeStrength() {
-        // http://stackoverflow.com/a/6894270/244576
-        if (mDisableEdgeEffects && Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-            return 0.0f;
-        }
+
         return super.getBottomFadingEdgeStrength();
     }
 }

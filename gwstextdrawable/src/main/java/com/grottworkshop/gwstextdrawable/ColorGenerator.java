@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * ColorGenerator
  * Created by fgrott on 6/17/2015.
  */
 public class ColorGenerator {
@@ -74,19 +75,37 @@ public class ColorGenerator {
     private final List<Integer> mColors;
     private final Random mRandom;
 
+    /**
+     *
+     * @param colorList the colorlist
+     * @return the ColorGenerator
+     */
     public static ColorGenerator create(List<Integer> colorList) {
         return new ColorGenerator(colorList);
     }
 
+    /**
+     *
+     * @param colorList the colorlist
+     */
     private ColorGenerator(List<Integer> colorList) {
         mColors = colorList;
         mRandom = new Random(System.currentTimeMillis());
     }
 
+    /**
+     *
+     * @return the mColors
+     */
     public int getRandomColor() {
         return mColors.get(mRandom.nextInt(mColors.size()));
     }
 
+    /**
+     *
+     * @param key the key
+     * @return mColors
+     */
     public int getColor(Object key) {
         return mColors.get(Math.abs(key.hashCode()) % mColors.size());
     }

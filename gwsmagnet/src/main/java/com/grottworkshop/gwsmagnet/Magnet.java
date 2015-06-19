@@ -38,6 +38,44 @@ import android.view.WindowManager;
 
 /**
  * Class holding the Magnet Icon, and performing touchEvents on the view.
+ * usage:
+ *
+ * set up service class implementing IIConCallback
+ * <code>
+ *     private Magnet mMagnet;
+ * </code>
+ * in your onCreate of the service class
+ * <code>
+ *
+ * ImageView iconView = new ImageView(this);
+ * iconView.setImageResource(R.drawable.ic_launcher);
+ * mMagnet = new Magnet.Builder(this)
+ *   .setIconView(iconView)
+ *   .setIconCallback(this)
+ *   .setRemoveIconResId(R.drawable.trash)
+ *   .setRemoveIconShadow(R.drawable.bottom_shadow)
+ *   .setShouldFlingAway(true)
+ *   .setShouldStickToWall(true)
+ *   .setRemoveIconShouldBeResponsive(true)
+ *   .build();
+ * mMagnet.show();
+ *
+ * </code>
+ * than in service class body after onCreate
+ * <code>
+ *     @Override
+ *     public void onIconClick(View icon, float iconXPose, float iconYPose) {
+ *
+ *         mMagnet.destroy();
+ *     }
+ *
+ * </code>
+ * than in the onCreate of the main activity
+ * <code>
+ *     startService(new Intent(this,MyService.class));
+ *     finish();
+ *
+ * </code>
  * Created by fgrott on 6/17/2015.
  */
 public class Magnet implements View.OnTouchListener {
@@ -65,6 +103,10 @@ public class Magnet implements View.OnTouchListener {
 
         Magnet magnet;
 
+        /**
+         *
+         * @param context the context
+         */
         public Builder(Context context) {
             magnet = new Magnet(context);
         }
@@ -72,7 +114,7 @@ public class Magnet implements View.OnTouchListener {
         /**
          * The Icon must have a view, provide a view or a layout using {@link #setIconView(int)}
          * @param iconView the view representing the icon
-         * @return
+         * @return return the Magnet
          */
         public Builder setIconView(View iconView) {
             magnet.mIconView = iconView;
@@ -83,7 +125,7 @@ public class Magnet implements View.OnTouchListener {
         /**
          * Use an xml layout to provide the button view
          * @param iconViewRes the layout id of the icon
-         * @return
+         * @return the Magnet
          */
         public Builder setIconView(int iconViewRes) {
             magnet.mIconView = LayoutInflater.from(magnet.mContext).inflate(iconViewRes, null);
@@ -93,8 +135,8 @@ public class Magnet implements View.OnTouchListener {
 
         /**
          * whether your magnet sticks to the edge of your screen when you release it
-         * @param shouldStick
-         * @return
+         * @param shouldStick boolean
+         * @return the Magnet
          */
         public Builder setShouldStickToWall(boolean shouldStick) {
             magnet.shouldStickToWall = shouldStick;
@@ -103,8 +145,8 @@ public class Magnet implements View.OnTouchListener {
 
         /**
          * whether you can fling away your Magnet towards the bottom of the screen
-         * @param shoudlFling
-         * @return
+         * @param shoudlFling boolean
+         * @return the Magnet
          */
         public Builder setShouldFlingAway(boolean shoudlFling) {
             magnet.shouldFlingAway = shoudlFling;
@@ -114,7 +156,7 @@ public class Magnet implements View.OnTouchListener {
         /**
          * Callback for when the icon moves, or when it isis flung away and destroyed
          * @param callback the callback
-         * @return the callback
+         * @return the Magnet
          */
         public Builder setIconCallback(IIconCallback callback) {
             magnet.mListener = callback;
@@ -124,7 +166,7 @@ public class Magnet implements View.OnTouchListener {
         /**
          *
          * @param shouldBeResponsive shouldberespnsive
-         * @return
+         * @return the Magnet
          */
         public Builder setRemoveIconShouldBeResponsive(boolean shouldBeResponsive) {
             magnet.mRemoveView.shouldBeResponsive = shouldBeResponsive;
@@ -133,8 +175,8 @@ public class Magnet implements View.OnTouchListener {
 
         /**
          * you can set a custom remove icon or use the default one
-         * @param removeIconResId
-         * @return
+         * @param removeIconResId int
+         * @return the Magnet
          */
         public Builder setRemoveIconResId(int removeIconResId) {
             magnet.mRemoveView.setIconResId(removeIconResId);
@@ -143,8 +185,8 @@ public class Magnet implements View.OnTouchListener {
 
         /**
          * you can set a custom remove icon shadow or use the default one
-         * @param shadow
-         * @return
+         * @param shadow int
+         * @return the Magent
          */
         public Builder setRemoveIconShadow(int shadow) {
             magnet.mRemoveView.setShadowBG(shadow);
@@ -160,6 +202,10 @@ public class Magnet implements View.OnTouchListener {
     }
 
 
+    /**
+     *
+     * @param context the context
+     */
     private Magnet(Context context) {
         mContext = context;
         mGestureDetector = new GestureDetector(context, new FlingListener());
@@ -174,6 +220,10 @@ public class Magnet implements View.OnTouchListener {
         goToWall();
     }
 
+    /**
+     *
+     * @param icon the view icon
+     */
     private void addToWindow(View icon) {
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -193,6 +243,12 @@ public class Magnet implements View.OnTouchListener {
         mHeight = (metrics.heightPixels - mIconView.getHeight()) / 2;
     }
 
+    /**
+     *
+     * @param view the view
+     * @param event the event
+     * @return boolean
+     */
     @Override
     public boolean onTouch(View view, MotionEvent event) {
         boolean eaten = false;
@@ -269,6 +325,11 @@ public class Magnet implements View.OnTouchListener {
         }
     }
 
+    /**
+     *
+     * @param deltaX the deltaX
+     * @param deltaY the deltaY
+     */
     private void move(float deltaX, float deltaY) {
         mLayoutParams.x += deltaX;
         mLayoutParams.y += deltaY;

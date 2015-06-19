@@ -63,14 +63,29 @@ public class RoundedImageView extends ImageView {
 
     private ScaleType mScaleType;
 
+    /**
+     *
+     * @param context the context
+     */
     public RoundedImageView(Context context) {
         super(context);
     }
 
+    /**
+     *
+     * @param context the context
+     * @param attrs the attributeSet
+     */
     public RoundedImageView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
+    /**
+     *
+     * @param context the context
+     * @param attrs the attributeSet
+     * @param defStyle the defStyle int
+     */
     public RoundedImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
@@ -161,6 +176,10 @@ public class RoundedImageView extends ImageView {
         }
     }
 
+    /**
+     *
+     * @param drawable the drawable
+     */
     @Override
     public void setImageDrawable(Drawable drawable) {
         mResource = 0;
@@ -169,6 +188,10 @@ public class RoundedImageView extends ImageView {
         super.setImageDrawable(mDrawable);
     }
 
+    /**
+     *
+     * @param bm the bm Bitmap
+     */
     @Override
     public void setImageBitmap(Bitmap bm) {
         mResource = 0;
@@ -177,6 +200,10 @@ public class RoundedImageView extends ImageView {
         super.setImageDrawable(mDrawable);
     }
 
+    /**
+     *
+     * @param resId the resId int
+     */
     @Override
     public void setImageResource(int resId) {
         if (mResource != resId) {
@@ -187,13 +214,17 @@ public class RoundedImageView extends ImageView {
         }
     }
 
-    @Override public void setImageURI(Uri uri) {
+    /**
+     *
+     * @param uri the uri
+     */
+    @Override
+    public void setImageURI(Uri uri) {
         super.setImageURI(uri);
         setImageDrawable(getDrawable());
     }
 
-    //Resources.getDrawable(res) is depreciated in api level 22 and was
-    //replaced with Resources.getDrawable(int, Theme)
+
     private Drawable resolveResource() {
         Resources rsrc = getResources();
         if (rsrc == null) { return null; }
@@ -202,6 +233,7 @@ public class RoundedImageView extends ImageView {
 
         if (mResource != 0) {
             try {
+                //TODO: Resources.getDrawable depreciated replaced with Resources.getDrawable(int, Theme)
                 d = rsrc.getDrawable(mResource);
             } catch (Exception e) {
                 Log.w(TAG, "Unable to find resource: " + mResource, e);
@@ -212,15 +244,26 @@ public class RoundedImageView extends ImageView {
         return RoundedDrawable.fromDrawable(d);
     }
 
+    /**
+     *
+     * @param background the background drawable
+     */
     @Override
     public void setBackground(Drawable background) {
         setBackgroundDrawable(background);
     }
 
+    /**
+     *
+     */
     private void updateDrawableAttrs() {
         updateAttrs(mDrawable);
     }
 
+    /**
+     *
+     * @param convert the convert boolean
+     */
     private void updateBackgroundDrawableAttrs(boolean convert) {
         if (mutateBackground) {
             if (convert) {
@@ -230,6 +273,10 @@ public class RoundedImageView extends ImageView {
         }
     }
 
+    /**
+     *
+     * @param drawable the drawable
+     */
     private void updateAttrs(Drawable drawable) {
         if (drawable == null) { return; }
 
@@ -249,8 +296,7 @@ public class RoundedImageView extends ImageView {
         }
     }
 
-    //View.setBackgroundDrawable(drawable) is depreciated in api level 16 and we are supposed to use
-    //setBackground(drawable)
+    //TODO: View.setBackgroundDrawable(drawable) is depreciated in api level 16 and we are supposed to use setBackground(drawable)
     @Override
     @Deprecated
     public void setBackgroundDrawable(Drawable background) {
@@ -259,14 +305,26 @@ public class RoundedImageView extends ImageView {
         super.setBackgroundDrawable(mBackgroundDrawable);
     }
 
+    /**
+     *
+     * @return the cornerRadius
+     */
     public float getCornerRadius() {
         return cornerRadius;
     }
 
+    /**
+     *
+     * @param resId the resId
+     */
     public void setCornerRadius(int resId) {
         setCornerRadius(getResources().getDimension(resId));
     }
 
+    /**
+     *
+     * @param radius the float radius
+     */
     public void setCornerRadius(float radius) {
         if (cornerRadius == radius) { return; }
 
@@ -275,14 +333,26 @@ public class RoundedImageView extends ImageView {
         updateBackgroundDrawableAttrs(false);
     }
 
+    /**
+     *
+     * @return borderWidth
+     */
     public float getBorderWidth() {
         return borderWidth;
     }
 
+    /**
+     *
+     * @param resId the resId
+     */
     public void setBorderWidth(int resId) {
         setBorderWidth(getResources().getDimension(resId));
     }
 
+    /**
+     *
+     * @param width the float width
+     */
     public void setBorderWidth(float width) {
         if (borderWidth == width) { return; }
 
@@ -292,18 +362,34 @@ public class RoundedImageView extends ImageView {
         invalidate();
     }
 
+    /**
+     *
+     * @return bprderColor.getDefaultColor()
+     */
     public int getBorderColor() {
         return borderColor.getDefaultColor();
     }
 
+    /**
+     *
+     * @param color int color
+     */
     public void setBorderColor(int color) {
         setBorderColor(ColorStateList.valueOf(color));
     }
 
+    /**
+     *
+     * @return borderColor
+     */
     public ColorStateList getBorderColors() {
         return borderColor;
     }
 
+    /**
+     *
+     * @param colors colors ColorStateList
+     */
     public void setBorderColor(ColorStateList colors) {
         if (borderColor.equals(colors)) { return; }
 
@@ -316,10 +402,18 @@ public class RoundedImageView extends ImageView {
         }
     }
 
+    /**
+     *
+     * @return isOval boolean
+     */
     public boolean isOval() {
         return isOval;
     }
 
+    /**
+     *
+     * @param oval oval boolean
+     */
     public void setOval(boolean oval) {
         isOval = oval;
         updateDrawableAttrs();
@@ -327,10 +421,18 @@ public class RoundedImageView extends ImageView {
         invalidate();
     }
 
+    /**
+     *
+     * @return mutateBackground
+     */
     public boolean mutatesBackground() {
         return mutateBackground;
     }
 
+    /**
+     *
+     * @param mutate mutate boolean
+     */
     public void mutateBackground(boolean mutate) {
         if (mutateBackground == mutate) { return; }
 

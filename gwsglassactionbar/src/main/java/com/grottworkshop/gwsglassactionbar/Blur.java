@@ -1,6 +1,6 @@
 package com.grottworkshop.gwsglassactionbar;
 
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
@@ -22,7 +22,7 @@ public class Blur {
         return apply(context, sentBitmap, GlassActionBar.DEFAULT_BLUR_RADIUS);
     }
 
-    @SuppressLint("NewApi")
+
     public static Bitmap apply(Context context, Bitmap sentBitmap, int radius) {
         if (VERSION.SDK_INT > 16) {
             Bitmap bitmap = sentBitmap.copy(sentBitmap.getConfig(), true);

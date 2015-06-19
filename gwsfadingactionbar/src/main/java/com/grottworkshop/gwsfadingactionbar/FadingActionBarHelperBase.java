@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 Manuel Peinado
- * Modifications Copyright 2105 Fred Grott(GrottWorkShop)
+ * Modifications Copyright 2015 Fred Grott(GrottWorkShop)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ package com.grottworkshop.gwsfadingactionbar;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -42,6 +43,7 @@ import com.grottworkshop.gwsfadingactionbar.view.ObservableWebViewWithHeader;
 
 
 /**
+ * FadingActionBarHelperBase
  * Created by fgrott on 6/16/2015.
  */
 public abstract class FadingActionBarHelperBase {
@@ -64,51 +66,61 @@ public abstract class FadingActionBarHelperBase {
     private FrameLayout mMarginView;
     private View mListViewBackgroundView;
 
+    @SuppressWarnings("unchecked")
     public final <T extends FadingActionBarHelperBase> T actionBarBackground(int drawableResId) {
         mActionBarBackgroundResId = drawableResId;
         return (T)this;
     }
 
+    @SuppressWarnings("unchecked")
     public final <T extends FadingActionBarHelperBase> T actionBarBackground(Drawable drawable) {
         mActionBarBackgroundDrawable = drawable;
         return (T)this;
     }
 
+    @SuppressWarnings("unchecked")
     public final <T extends FadingActionBarHelperBase> T headerLayout(int layoutResId) {
         mHeaderLayoutResId = layoutResId;
         return (T)this;
     }
 
+    @SuppressWarnings("unchecked")
     public final <T extends FadingActionBarHelperBase> T headerView(View view) {
         mHeaderView = view;
         return (T)this;
     }
 
+    @SuppressWarnings("unchecked")
     public final <T extends FadingActionBarHelperBase> T headerOverlayLayout(int layoutResId) {
         mHeaderOverlayLayoutResId = layoutResId;
         return (T)this;
     }
 
+    @SuppressWarnings("unchecked")
     public final <T extends FadingActionBarHelperBase> T headerOverlayView(View view) {
         mHeaderOverlayView = view;
         return (T)this;
     }
 
+    @SuppressWarnings("unchecked")
     public final <T extends FadingActionBarHelperBase> T contentLayout(int layoutResId) {
         mContentLayoutResId = layoutResId;
         return (T)this;
     }
 
+    @SuppressWarnings("unchecked")
     public final <T extends FadingActionBarHelperBase> T  contentView(View view) {
         mContentView = view;
         return (T)this;
     }
 
+    @SuppressWarnings("unchecked")
     public final <T extends FadingActionBarHelperBase> T lightActionBar(boolean value) {
         mLightActionBar = value;
         return (T)this;
     }
 
+    @SuppressWarnings("unchecked")
     public final <T extends FadingActionBarHelperBase> T  parallax(boolean value) {
         mUseParallax = value;
         return (T)this;
@@ -185,19 +197,12 @@ public abstract class FadingActionBarHelperBase {
     protected abstract boolean isActionBarNull();
     protected abstract void setActionBarBackgroundDrawable(Drawable drawable);
 
+    @SuppressWarnings("unchecked")
     protected <T> T getActionBarWithReflection(Activity activity, String methodName) {
         try {
             Method method = activity.getClass().getMethod(methodName);
             return (T)method.invoke(activity);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (ClassCastException e) {
+        } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException | ClassCastException e) {
             e.printStackTrace();
         }
         return null;
@@ -219,7 +224,7 @@ public abstract class FadingActionBarHelperBase {
     };
 
     private View createWebView() {
-        ViewGroup webViewContainer = (ViewGroup) mInflater.inflate(R.layout.fab__webview_container, null);
+        @SuppressLint("InflateParams") ViewGroup webViewContainer = (ViewGroup) mInflater.inflate(R.layout.fab__webview_container, null);
 
         ObservableWebViewWithHeader webView = (ObservableWebViewWithHeader) mContentView;
         webView.setOnScrollChangedCallback(mOnScrollChangedListener);
@@ -240,7 +245,7 @@ public abstract class FadingActionBarHelperBase {
     }
 
     private View createScrollView() {
-        ViewGroup scrollViewContainer = (ViewGroup) mInflater.inflate(R.layout.fab__scrollview_container, null);
+        @SuppressLint("InflateParams") ViewGroup scrollViewContainer = (ViewGroup) mInflater.inflate(R.layout.fab__scrollview_container, null);
 
         ObservableScrollView scrollView = (ObservableScrollView) scrollViewContainer.findViewById(R.id.fab__scroll_view);
         scrollView.setOnScrollChangedCallback(mOnScrollChangedListener);
@@ -265,7 +270,7 @@ public abstract class FadingActionBarHelperBase {
     };
 
     private View createListView(ListView listView) {
-        ViewGroup contentContainer = (ViewGroup) mInflater.inflate(R.layout.fab__listview_container, null);
+        @SuppressLint("InflateParams") ViewGroup contentContainer = (ViewGroup) mInflater.inflate(R.layout.fab__listview_container, null);
         contentContainer.addView(mContentView);
 
         mHeaderContainer = (FrameLayout) contentContainer.findViewById(R.id.fab__header_container);
@@ -341,7 +346,7 @@ public abstract class FadingActionBarHelperBase {
     }
 
     private void updateHeaderHeight(int headerHeight) {
-        ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) mMarginView.getLayoutParams();
+        ViewGroup.LayoutParams params = mMarginView.getLayoutParams();
         params.height = headerHeight;
         mMarginView.setLayoutParams(params);
         if (mListViewBackgroundView != null) {

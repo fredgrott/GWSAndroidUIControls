@@ -62,7 +62,7 @@ import android.widget.ImageView;
  */
 public class ParallaxImageViewTwo extends ImageView implements SensorEventListener {
 
-    private static final String TAG = ParallaxImageView.class.getName();
+
 
     /**
      * If the x and y axis' intensities are scaled to the image's aspect ratio (true) or
@@ -93,10 +93,19 @@ public class ParallaxImageViewTwo extends ImageView implements SensorEventListen
     private float mXOffset;
     private float mYOffset;
 
+    /**
+     *
+     * @param context the context
+     */
     public ParallaxImageViewTwo(Context context) {
         this(context, null);
     }
 
+    /**
+     *
+     * @param context the context
+     * @param attrs the attributeSet
+     */
     public ParallaxImageViewTwo(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -142,12 +151,21 @@ public class ParallaxImageViewTwo extends ImageView implements SensorEventListen
         });
     }
 
+    /**
+     *
+     * @param widthMeasureSpec the widthMeasureSpec int
+     * @param heightMeasureSpec the heightMeasureSpec int
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         configureMatrix();
     }
 
+    /**
+     *
+     * @param event the SensorEvent
+     */
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (mSensorInterpreter == null) return;
@@ -160,6 +178,11 @@ public class ParallaxImageViewTwo extends ImageView implements SensorEventListen
         setTranslate(vectors[2], -vectors[1]);
     }
 
+    /**
+     *
+     * @param sensor sensor object
+     * @param accuracy int accuracy value
+     */
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) { }
 

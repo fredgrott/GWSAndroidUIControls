@@ -8,11 +8,12 @@ import android.util.Log;
 
 
 /**
+ * BlurTask
  * Created by fgrott on 6/16/2015.
  */
 public class BlurTask {
 
-    protected static final String TAG = "BlurTask";
+
     private Bitmap source;
     private Canvas canvas;
     private AsyncTask<Void, Void, Void> task;

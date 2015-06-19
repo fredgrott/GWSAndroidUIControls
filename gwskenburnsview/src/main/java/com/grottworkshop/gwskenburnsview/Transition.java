@@ -23,6 +23,7 @@ import android.view.animation.Interpolator;
 
 
 /**
+ * Transition
  * Created by fgrott on 6/16/2015.
  */
 public class Transition {

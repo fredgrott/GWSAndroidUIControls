@@ -25,6 +25,7 @@ import java.util.Random;
 
 
 /**
+ * RandomTransitionGenerator
  * Created by fgrott on 6/16/2015.
  */
 public class RandomTransitionGenerator implements ITransitionGenerator {
@@ -68,7 +69,7 @@ public class RandomTransitionGenerator implements ITransitionGenerator {
         boolean drawableBoundsChanged = true;
         boolean viewportRatioChanged = true;
 
-        RectF srcRect = null;
+        RectF srcRect;
         RectF dstRect = null;
 
         if (!firstTransition) {

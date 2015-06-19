@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 Manuel Peinado
- * Modifications Copyright 2105 Fred Grott(GrottWorkShop)
+ * Modifications Copyright 2015 Fred Grott(GrottWorkShop)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,20 +23,37 @@ import android.app.Activity;
 import android.graphics.drawable.Drawable;
 
 /**
+ * FadingActionBarHelper
+ *
+ * usage:
+ *
+ * usually in the onCreate of the activity
+ * <code>
+ *     FadingActionBarHelper helper = new FadingActionBarHelper()
+ *       .actionBarBackground(R.drawable.ab_background)
+ *       .headerLayout(R.layout.header)
+ *       .contentLayout(R.layout.activity_listview)
+ *       .headerOverlayLayout(R.layout.header_overlay);
+ *      setContentView(helper.createView(this));
+ *     helper.initActionBar(this);
+ *
+ * </code>
+ *
+ * @see FadingActionBarHelperBase for more settings
+ *
  * Created by fgrott on 6/16/2015.
  */
 public class FadingActionBarHelper extends FadingActionBarHelperBase {
 
     private ActionBar mActionBar;
 
-    @SuppressLint("NewApi")
     @Override
     public void initActionBar(Activity activity) {
         mActionBar = activity.getActionBar();
         super.initActionBar(activity);
     }
 
-    @SuppressLint("NewApi")
+
     @Override
     protected int getActionBarHeight() {
         return mActionBar.getHeight();
@@ -47,7 +64,7 @@ public class FadingActionBarHelper extends FadingActionBarHelperBase {
         return mActionBar == null;
     }
 
-    @SuppressLint("NewApi")
+
     @Override
     protected void setActionBarBackgroundDrawable(Drawable drawable) {
         mActionBar.setBackgroundDrawable(drawable);

@@ -29,6 +29,26 @@ import android.view.animation.OvershootInterpolator;
 
 /**
  * Draw a head point and foot point.
+ *
+ * usage:
+ *
+ * in your ActionBarActivity in the onCreate method
+ * <code>
+ *     viewPager = (ScrollerViewPager) findViewById(R.id.view_pager);
+ *     SpringIndicator springIndicator = (SpringIndicator) findViewById(R.id.indicator);
+ *     Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+ *     setSupportActionBar(toolbar);
+ *
+ *     PagerModelManager manager = new PagerModelManager();
+ *     manager.addCommonFragment(GuideFragment.class, getBgRes(), getTitles());
+ *     ModelPagerAdapter adapter = new ModelPagerAdapter(getSupportFragmentManager(), manager);
+ *     viewPager.setAdapter(adapter);
+ *     viewPager.fixScrollSpeed();
+ *
+ * // just set viewPager
+ * springIndicator.setViewPager(viewPager);
+ *
+ * </code>
  * Created by fgrott on 6/16/2015.
  */
 public class SpringView extends View {

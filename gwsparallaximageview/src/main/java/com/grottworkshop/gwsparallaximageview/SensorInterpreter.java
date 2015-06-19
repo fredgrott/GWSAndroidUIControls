@@ -29,11 +29,12 @@ import static android.hardware.SensorManager.AXIS_Y;
 
 
 /**
+ * SensorInterpreter
  * Created by fgrott on 6/18/2015.
  */
 class SensorInterpreter {
 
-    private static final String TAG = SensorInterpreter.class.getName();
+
 
     /**
      * The standardized tilt vector corresponding to yaw, pitch, and roll deltas from target matrix.

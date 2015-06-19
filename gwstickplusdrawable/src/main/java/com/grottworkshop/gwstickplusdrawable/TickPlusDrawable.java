@@ -1,3 +1,20 @@
+/*
+ * Copyright 2013 Flavien Laurent
+ * Modifications Copyright 2105  Fred Grott(GrottWorkShop)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ */
 package com.grottworkshop.gwstickplusdrawable;
 
 import android.animation.AnimatorSet;
@@ -20,6 +37,7 @@ import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 
 
 /**
+ * TickPlusDrawable
  * Created by fgrott on 6/17/2015.
  */
 public class TickPlusDrawable extends Drawable {
@@ -130,6 +148,7 @@ public class TickPlusDrawable extends Drawable {
         mTickMode = !mTickMode;
     }
 
+    @SuppressWarnings("unchecked")
     public void animateTick() {
         AnimatorSet set = new AnimatorSet();
         set.playTogether(
@@ -154,6 +173,7 @@ public class TickPlusDrawable extends Drawable {
         set.start();
     }
 
+    @SuppressWarnings("unchecked")
     public void animatePlus() {
         AnimatorSet set = new AnimatorSet();
         set.playTogether(
@@ -178,23 +198,45 @@ public class TickPlusDrawable extends Drawable {
         set.start();
     }
 
+    /**
+     *
+     * @param alpha the alpha
+     */
     @Override
     public void setAlpha(int alpha) {}
 
+    /**
+     *
+     * @param cf the colorfilter
+     */
     @Override
     public void setColorFilter(ColorFilter cf) {}
 
+    /**
+     *
+     * @return PixelFormat.TRANSLUCENT
+     */
     @Override
     public int getOpacity() {
         return PixelFormat.TRANSLUCENT;
     }
 
     private Property<TickPlusDrawable, Integer> mBackgroundColorProperty = new Property<TickPlusDrawable, Integer>(Integer.class, "bg_color") {
+        /**
+         *
+         * @param object the tickplusdrawable object
+         * @return object.mBackgroundPaint
+         */
         @Override
         public Integer get(TickPlusDrawable object) {
             return object.mBackgroundPaint.getColor();
         }
 
+        /**
+         *
+         * @param object the tickplusdrawable object
+         * @param value the value
+         */
         @Override
         public void set(TickPlusDrawable object, Integer value) {
             object.mBackgroundPaint.setColor(value);
@@ -202,23 +244,46 @@ public class TickPlusDrawable extends Drawable {
     };
 
     private Property<TickPlusDrawable, Integer> mLineColorProperty = new Property<TickPlusDrawable, Integer>(Integer.class, "line_color") {
+        /**
+         *
+         * @param object the tickplusdrawable object
+         * @return object.mLinePaint
+         */
         @Override
         public Integer get(TickPlusDrawable object) {
             return object.mLinePaint.getColor();
         }
 
+        /**
+         *
+         * @param object the tickplusdrawable object
+         * @param value the value
+         */
         @Override
         public void set(TickPlusDrawable object, Integer value) {
             object.mLinePaint.setColor(value);
         }
     };
 
+    /**
+     *
+     */
     private Property<TickPlusDrawable, Float> mRotationProperty = new Property<TickPlusDrawable, Float>(Float.class, "rotation") {
+        /**
+         *
+         * @param object the tickplsudrawable object
+         * @return object.mRotation
+         */
         @Override
         public Float get(TickPlusDrawable object) {
             return object.mRotation;
         }
 
+        /**
+         *
+         * @param object the tickplusdrawable object
+         * @param value the value
+         */
         @Override
         public void set(TickPlusDrawable object, Float value) {
             object.mRotation = value;
@@ -234,27 +299,51 @@ public class TickPlusDrawable extends Drawable {
     private PointProperty mPropertyPointDX = new XPointProperty(3);
     private PointProperty mPropertyPointDY = new YPointProperty(3);
 
+    /**
+     * PointProperty
+     */
     private abstract class PointProperty extends Property<TickPlusDrawable, Float> {
 
         protected int mPointIndex;
 
+        /**
+         *
+         * @param pointIndex the pointIndex
+         */
         private PointProperty(int pointIndex) {
             super(Float.class, "point_" + pointIndex);
             mPointIndex = pointIndex;
         }
     }
 
+    /**
+     * XPointProperty
+     */
     private class XPointProperty extends PointProperty {
 
+        /**
+         *
+         * @param pointIndex the pointIndex
+         */
         private XPointProperty(int pointIndex) {
             super(pointIndex);
         }
 
+        /**
+         *
+         * @param object the tickplusdrawable object
+         * @return object.x
+         */
         @Override
         public Float get(TickPlusDrawable object) {
             return object.x(mPointIndex);
         }
 
+        /**
+         *
+         * @param object the tickplusdrawable object
+         * @param value the value
+         */
         @Override
         public void set(TickPlusDrawable object, Float value) {
             object.mPoints[object.xPosition(mPointIndex)] = value;
@@ -262,17 +351,34 @@ public class TickPlusDrawable extends Drawable {
         }
     }
 
+    /**
+     * YPointProperty
+     */
     private class YPointProperty extends PointProperty {
 
+        /**
+         *
+         * @param pointIndex the pointIndex
+         */
         private YPointProperty(int pointIndex) {
             super(pointIndex);
         }
 
+        /**
+         *
+         * @param object the tickplusdrwable object
+         * @return object.y
+         */
         @Override
         public Float get(TickPlusDrawable object) {
             return object.y(mPointIndex);
         }
 
+        /**
+         *
+         * @param object the tickplusdrawable object
+         * @param value the value
+         */
         @Override
         public void set(TickPlusDrawable object, Float value) {
             object.mPoints[object.yPosition(mPointIndex)] = value;

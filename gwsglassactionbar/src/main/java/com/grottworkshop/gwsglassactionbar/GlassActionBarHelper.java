@@ -18,6 +18,7 @@
 
 package com.grottworkshop.gwsglassactionbar;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -38,6 +39,21 @@ import android.widget.ScrollView;
 
 
 /**
+ * GlassActionBarHelper
+ *
+ * usage:
+ * <code>
+ *     private GlassActionBarHelper helper;
+
+ * </code>
+ * than in the onCreate method
+ * <code>
+ *     helper = new GlassActionBarHelper().contentLayout(R.layout.activity_fixed_header);
+ *     setContentView(helper.createView(this));
+ *
+ * </code>
+ *
+ * @see GlassActionBarHelper methods for more settings.
  * Created by fgrott on 6/16/2015.
  */
 public class GlassActionBarHelper implements OnGlobalLayoutListener, NotifyingScrollView.OnScrollChangedListener, BlurTask.Listener, ListViewScrollObserver.OnListViewScrollListener {
@@ -71,6 +87,7 @@ public class GlassActionBarHelper implements OnGlobalLayoutListener, NotifyingSc
         return this;
     }
 
+    @SuppressLint("InflateParams")
     public View createView(Context context) {
         int[] attrs = { android.R.attr.windowBackground };
 

@@ -28,6 +28,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 
 /**
+ * FlingListener
  * Created by fgrott on 6/17/2015.
  */
 class FlingListener extends GestureDetector.SimpleOnGestureListener {

@@ -13,6 +13,7 @@ import android.os.Environment;
 import android.view.View;
 
 /**
+ * Utils
  * Created by fgrott on 6/16/2015.
  */
 public class Utils {
@@ -38,6 +39,7 @@ public class Utils {
         return dest;
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void saveToSdCard(Bitmap bmp, String fileName) {
         try {
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();

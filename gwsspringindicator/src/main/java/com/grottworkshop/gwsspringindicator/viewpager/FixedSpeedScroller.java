@@ -22,6 +22,7 @@ import android.widget.Scroller;
 
 
 /**
+ * FixedSpeedScroller
  * Created by fgrott on 6/16/2015.
  */
 public class FixedSpeedScroller extends Scroller {
@@ -29,23 +30,50 @@ public class FixedSpeedScroller extends Scroller {
     private int mDuration = 1000;
     boolean useFixedSpeed = false;
 
+    /**
+     *
+     * @param context the context
+     */
     public FixedSpeedScroller(Context context) {
         super(context);
     }
 
+    /**
+     *
+     * @param context the context
+     * @param interpolator the interpolator
+     */
     public FixedSpeedScroller(Context context, Interpolator interpolator) {
         super(context, interpolator);
     }
 
+    /**
+     *
+     * @param context the context
+     * @param interpolator the interpolator
+     * @param flywheel the flywheel boolean
+     */
     public FixedSpeedScroller(Context context, Interpolator interpolator, boolean flywheel) {
         super(context, interpolator, flywheel);
     }
 
+    /**
+     *
+     * @param paramInt the paramInt int
+     */
     public void setScrollAtFixedSpeed(int paramInt) {
         this.useFixedSpeed = true;
         this.mDuration = paramInt;
     }
 
+    /**
+     *
+     * @param startX the startX int
+     * @param startY the startY int
+     * @param dx the dx int
+     * @param dy the dy int
+     * @param duration the duration int
+     */
     @Override
     public void startScroll(int startX, int startY, int dx, int dy, int duration) {
         // Ignore received duration, use fixed one instead
@@ -53,12 +81,23 @@ public class FixedSpeedScroller extends Scroller {
 
     }
 
+    /**
+     *
+     * @param startX the startX int
+     * @param startY the startY int
+     * @param dx the dx int
+     * @param dy the dy int
+     */
     @Override
     public void startScroll(int startX, int startY, int dx, int dy) {
         // Ignore received duration, use fixed one instead
         super.startScroll(startX, startY, dx, dy, mDuration);
     }
 
+    /**
+     *
+     * @param timeMilli the timeMilli int
+     */
     public void setDuration(int timeMilli){
         this.mDuration = timeMilli;
     }

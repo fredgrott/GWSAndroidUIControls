@@ -18,6 +18,7 @@
 package com.grottworkshop.gwskenburnsview;
 
 /**
+ * IncompatibleRatioException to catch incompatible ratio use cases.
  * Created by fgrott on 6/16/2015.
  */
 public class IncompatibleRatioException extends RuntimeException {

@@ -24,6 +24,7 @@ import android.widget.ListView;
 
 
 /**
+ * ListViewScrollObserver
  * Created by fgrott on 6/16/2015.
  */
 public class ListViewScrollObserver implements OnScrollListener {

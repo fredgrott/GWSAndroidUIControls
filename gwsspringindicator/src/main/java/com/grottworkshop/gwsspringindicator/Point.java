@@ -28,34 +28,66 @@ public class Point {
     private float radius;
     private int color;
 
+    /**
+     *
+     * @return X
+     */
     public float getX() {
         return x;
     }
 
+    /**
+     *
+     * @param x the x
+     */
     public void setX(float x) {
         this.x = x;
     }
 
+    /**
+     *
+     * @return the y
+     */
     public float getY() {
         return y;
     }
 
+    /**
+     *
+     * @param y the y
+     */
     public void setY(float y) {
         this.y = y;
     }
 
+    /**
+     *
+     * @return the radius
+     */
     public float getRadius() {
         return radius;
     }
 
+    /**
+     *
+     * @param radius the radius
+     */
     public void setRadius(float radius) {
         this.radius = radius;
     }
 
+    /**
+     *
+     * @return the color
+     */
     public int getColor() {
         return color;
     }
 
+    /**
+     *
+     * @param color tthe color
+     */
     public void setColor(int color) {
         this.color = color;
     }

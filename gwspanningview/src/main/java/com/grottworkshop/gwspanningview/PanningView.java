@@ -26,6 +26,37 @@ import android.widget.ImageView;
 
 
 /**
+ * PanningView
+ * usage:
+ *
+ * in your onCreate method of the main activity
+ * <code>
+ *     final PanningView panningView = (PanningView) findViewById(R.id.panningView);
+ *
+ *     findViewById(R.id.buttonStart).setOnClickListener(new View.OnClickListener() {
+ *     @Override
+ *     public void onClick(View v) {
+ *         panningView.startPanning();
+ *     }
+ *      });
+ *    findViewById(R.id.buttonStop).setOnClickListener(new View.OnClickListener() {
+ *            @Override
+ *            public void onClick(View v) {
+ *                   panningView.stopPanning();
+ *            }
+ *        });
+ *     findViewById(R.id.buttonChange).setOnClickListener(new View.OnClickListener() {
+ *              @Override
+ *              public void onClick(View v) {
+ *                      mDrawableIndex++;
+ *                      if(mDrawableIndex >= drawables.length) {
+ *                              mDrawableIndex = 0;
+ *                      }
+ *                     panningView.setImageResource(drawables[mDrawableIndex]);
+ *                 }
+ *             });
+ *
+ * </code>
  * Created by fgrott on 6/16/2015.
  */
 public class PanningView extends ImageView {
