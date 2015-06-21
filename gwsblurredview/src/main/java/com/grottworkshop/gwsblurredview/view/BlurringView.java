@@ -69,15 +69,15 @@ public class BlurringView extends View {
         super(context, attrs);
 
         final Resources res = getResources();
-        final int defaultBlurRadius = res.getInteger(R.integer.default_blur_radius);
-        final int defaultDownsampleFactor = res.getInteger(R.integer.default_downsample_factor);
-        final int defaultOverlayColor = res.getColor(R.color.default_overlay_color);
+        final int defaultBlurRadius = res.getInteger(R.integer.gwsbv_default_blur_radius);
+        final int defaultDownsampleFactor = res.getInteger(R.integer.gwsbv_default_downsample_factor);
+        final int defaultOverlayColor = res.getColor(R.color.gwsbv_default_overlay_color);
 
         initializeRenderScript(context);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PxBlurringView);
-        setBlurRadius(a.getInt(R.styleable.PxBlurringView_blurRadius, defaultBlurRadius));
-        setDownsampleFactor(a.getInt(R.styleable.PxBlurringView_downsampleFactor,
+        setBlurRadius(a.getInt(R.styleable.PxBlurringView_gwsbv_blurRadius, defaultBlurRadius));
+        setDownsampleFactor(a.getInt(R.styleable.PxBlurringView_gwsbv_downsampleFactor,
                 defaultDownsampleFactor));
         setOverlayColor(a.getColor(R.styleable.PxBlurringView_overlayColor, defaultOverlayColor));
         a.recycle();
