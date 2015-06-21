@@ -5,8 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/GWSAndroidUIControls.iml" filepath="$PROJECT_DIR$/GWSAndroidUIControls.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/gwsblurredview/gwsblurredview.iml" filepath="$PROJECT_DIR$/gwsblurredview/gwsblurredview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gwsblurredviewapp/gwsblurredviewapp.iml" filepath="$PROJECT_DIR$/gwsblurredviewapp/gwsblurredviewapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/gwschips/gwschips.iml" filepath="$PROJECT_DIR$/gwschips/gwschips.iml" />
       <module fileurl="file://$PROJECT_DIR$/gwsdrawerdrawable/gwsdrawerdrawable.iml" filepath="$PROJECT_DIR$/gwsdrawerdrawable/gwsdrawerdrawable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gwsdrawerdrawableapp/gwsdrawerdrawableapp.iml" filepath="$PROJECT_DIR$/gwsdrawerdrawableapp/gwsdrawerdrawableapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/gwsfadingactionbar/gwsfadingactionbar.iml" filepath="$PROJECT_DIR$/gwsfadingactionbar/gwsfadingactionbar.iml" />
       <module fileurl="file://$PROJECT_DIR$/gwsglassactionbar/gwsglassactionbar.iml" filepath="$PROJECT_DIR$/gwsglassactionbar/gwsglassactionbar.iml" />
       <module fileurl="file://$PROJECT_DIR$/gwskenburnsview/gwskenburnsview.iml" filepath="$PROJECT_DIR$/gwskenburnsview/gwskenburnsview.iml" />

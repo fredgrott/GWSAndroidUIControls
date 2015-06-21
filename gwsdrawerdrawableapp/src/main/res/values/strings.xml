@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GWSDrawerDrawableApp</string>
+    <string name="content_hint">Content</string>
+    <string name="drawer_hint">Drawer</string>
+    <string name="rounded">See Rounded</string>
+    <string name="squared">See Squared</string>
+
+</resources>

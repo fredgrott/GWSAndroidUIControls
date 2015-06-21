@@ -79,7 +79,7 @@ public class BlurringView extends View {
         setBlurRadius(a.getInt(R.styleable.PxBlurringView_gwsbv_blurRadius, defaultBlurRadius));
         setDownsampleFactor(a.getInt(R.styleable.PxBlurringView_gwsbv_downsampleFactor,
                 defaultDownsampleFactor));
-        setOverlayColor(a.getColor(R.styleable.PxBlurringView_overlayColor, defaultOverlayColor));
+        setOverlayColor(a.getColor(R.styleable.PxBlurringView_gwsbv_overlayColor, defaultOverlayColor));
         a.recycle();
     }
 
